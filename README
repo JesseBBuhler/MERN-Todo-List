@@ -1,0 +1,23 @@
+# MERN ToDoList
+
+## Aim
+
+The aim of this project is to create a todo list app that let's users keep track of their individual tasks.
+
+## Stack
+
+The project will be built with the MERN stak: Mongodb, Express, Node, and React.
+
+## Requirements
+
+### User login
+
+Users will be able to create an account with authentication to be able to log in to see their tasks.
+
+### Task CRUD
+
+Users will be able to view their list of tasks, create new tasks, check or uncheck tasks, and delete old tasks.
+
+### User CRUD
+
+User will be able to view their account info, change their password or username, and delete their account.
