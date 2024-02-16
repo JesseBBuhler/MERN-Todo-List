@@ -1,28 +1,11 @@
 const express = require("express");
 const app = express();
+const taskRouts = require("./routes/tasksRoutes");
 
 const port = 2250;
 
-//get all tasks
-app.get("/", (req, res) => {
-  res.send("Send all tasks");
-});
-
-//edit task
-app.patch("/:id", (req, res) => {
-  res.send(`Editing task number ${req.params.id}`);
-});
-
-//make new task
-app.post("/", (req, res) => {
-  res.send("Creating a new task");
-});
-
-//delete task
-app.delete("/:id", (req, res) => {
-  res.send(`Deleting task ${req.params.id}`);
-});
+app.use("/api/tasks", taskRouts);
 
 app.listen(port, () => {
-  console.log(`Listenting on port ${port}`);
+  console.log(`listening on port ${port}`);
 });
