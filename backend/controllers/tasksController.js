@@ -21,7 +21,7 @@ const makeTask = async (req, res) => {
   if (!task) {
     emptyFields.push("task");
   }
-  if (!completed) {
+  if (typeof completed !== "boolean") {
     emptyFields.push("completed");
   }
   if (emptyFields.length > 0) {
