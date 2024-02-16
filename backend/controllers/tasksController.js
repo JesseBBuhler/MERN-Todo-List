@@ -39,14 +39,40 @@ const makeTask = async (req, res) => {
 };
 
 // check or uncheck task
-const checkTask = (req, res) => {
+const checkTask = async (req, res) => {
   const { id } = req.params;
-  res.send(`check task with id ${id}`);
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(400).json({ error: "invalid task id" });
+  }
+
+  const foundTask = await TaskModel.findById(id);
+
+  if (!foundTask) {
+    return res.status(404).json({ error: "no task found" });
+  }
+
+  foundTask.completed = !foundTask.completed;
+  await foundTask.save();
+
+  res.status(200).json(foundTask);
 };
 
 // delete task
-const deleteTask = (req, res) => {
-  res.send(`delete task with id ${req.params.id}`);
+const deleteTask = async (req, res) => {
+  const { id } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(400).json({ error: "invalid task id" });
+  }
+
+  const taskToDelete = await TaskModel.findByIdAndDelete(id);
+
+  if (!taskToDelete) {
+    return res.status(404).json({ error: "no task found" });
+  }
+
+  res.status(200).json(taskToDelete);
 };
 
 module.exports = {
