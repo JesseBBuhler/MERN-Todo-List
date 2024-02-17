@@ -1,13 +1,61 @@
+:root {
+  --primary-bg: #576490;
+  --secondary-bg: #7796cb;
+  --tertiary-bg: #a3bcf9;
+  --primary-text: #c9cad9;
+  --secondary-text: #d1d2f9;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--primary-bg);
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.header {
+  background-color: var(--secondary-bg);
+  height: 5rem;
+  width: 100%;
+  position: fixed;
+  top: 0;
+}
+
+.mainPage {
+  display: flex;
+  flex-direction: row;
+  margin: 5rem 0 4rem;
+}
+
+.sideBar {
+  background-color: var(--tertiary-bg);
+  position: fixed;
+  top: 5rem;
+  width: 10rem;
+  bottom: 4rem;
+}
+
+.tasks {
+  background-color: var(--secondary-text);
+  margin-left: 10rem;
+}
+
+.tasks h1 {
+  margin: 0;
+}
+
+.footer {
+  background-color: var(--secondary-bg);
+  height: 4rem;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
