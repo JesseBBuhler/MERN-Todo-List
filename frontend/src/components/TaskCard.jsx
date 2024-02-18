@@ -1,8 +1,11 @@
 const TaskCard = (props) => {
-  console.log(props.data);
+  console.log(props.data.task, props.data.completed);
   return (
-    <div className="task">
-      <h1>{props.data.task}</h1>
+    <div className="taskCard">
+      <h2>{props.data.task}</h2>
+      <div
+        className={`checkbox ${props.data.completed ? "checked" : ""}`}
+      ></div>
     </div>
   );
 };

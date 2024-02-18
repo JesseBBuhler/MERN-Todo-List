@@ -25,7 +25,7 @@ app.use("/api/tasks", taskRouts);
 mongoose
   .connect(fullURI)
   .then(() => {
-    console.log("connnected to database");
+    console.log("connected to database");
     //start server
     app.listen(port, () => {
       console.log(`listening on port ${port}`);
