@@ -27,6 +27,7 @@ code {
   width: 100%;
   position: fixed;
   top: 0;
+  z-index: 1;
 }
 
 .mainPage {
@@ -76,6 +77,19 @@ code {
 .checkbox.checked {
   border: solid lightgreen;
   background-color: lightgreen;
+}
+
+.deleteButton {
+  background-color: orangered;
+  width: 2rem;
+  height: 2rem;
+  text-align: center;
+  border-radius: 50%;
+}
+
+.deleteButton .lower {
+  position: relative;
+  top: 0.25rem;
 }
 
 .footer {
