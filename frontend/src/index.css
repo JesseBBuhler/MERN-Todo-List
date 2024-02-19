@@ -46,7 +46,7 @@ code {
 .tasks {
   margin: 1rem 11rem;
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   row-gap: 1rem;
 }
 
@@ -69,10 +69,12 @@ code {
   height: 1.5rem;
   width: 1.5rem;
   border-radius: 5px;
-  background-color: red;
+  border: solid 3px red;
+  text-align: center;
 }
 
 .checkbox.checked {
+  border: solid lightgreen;
   background-color: lightgreen;
 }
 
