@@ -4,6 +4,9 @@
   --tertiary-bg: #a3bcf9;
   --primary-card: #c9cad9;
   --secondary-card: #d1d2f9;
+  --sideBarWidth: 10rem;
+  --headerHeight: 5rem;
+  --footerHeight: 4rem;
 }
 
 body {
@@ -23,7 +26,7 @@ code {
 
 .header {
   background-color: var(--secondary-bg);
-  height: 5rem;
+  height: var(--headerHeight);
   width: 100%;
   position: fixed;
   top: 0;
@@ -33,19 +36,28 @@ code {
 .mainPage {
   display: flex;
   flex-direction: row;
-  margin: 5rem 0 4rem;
+  margin: var(--headerHeight) 0 4rem;
 }
 
 .sideBar {
   background-color: var(--tertiary-bg);
   position: fixed;
-  top: 5rem;
-  width: 10rem;
-  bottom: 4rem;
+  top: var(--headerHeight);
+  width: var(--sideBarWidth);
+  bottom: var(--footerHeight);
+  text-align: center;
+}
+
+.newTaskInput {
+  width: calc(var(--sideBarWidth) - 2rem);
+}
+
+.newTaskButton {
+  width: calc(var(--sideBarWidth) - 2rem);
 }
 
 .tasks {
-  margin: 1rem 11rem;
+  margin: 1rem calc(1rem + var(--sideBarWidth));
   display: flex;
   flex-direction: column-reverse;
   row-gap: 1rem;
@@ -94,7 +106,7 @@ code {
 
 .footer {
   background-color: var(--secondary-bg);
-  height: 4rem;
+  height: var(--footerHeight);
   position: fixed;
   bottom: 0;
   width: 100%;
