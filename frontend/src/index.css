@@ -56,6 +56,12 @@ code {
   width: calc(var(--sideBarWidth) - 2rem);
 }
 
+.error {
+  margin-top: 0.5rem;
+  background-color: orangered;
+  color: white;
+}
+
 .tasks {
   margin: 1rem calc(1rem + var(--sideBarWidth));
   display: flex;
