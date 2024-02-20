@@ -1,10 +1,16 @@
+import { TasksContext } from "../context/TaskContext";
+import { useTasksContext } from "../hooks/useTasksContext";
+
 const TaskCard = (props) => {
+  const { tasks, dispatch } = useTasksContext();
   const toggleTaskCompletion = async () => {
     const response = await fetch(`api/tasks/${props.data._id}`, {
       method: "PATCH",
     });
     const json = await response.json();
-    alert(json);
+    if (response.ok) {
+      dispatch({ type: "TOGGLE_TASK", payload: json });
+    }
   };
 
   const deleteTask = async () => {
@@ -12,7 +18,11 @@ const TaskCard = (props) => {
       method: "DELETE",
     });
     const json = await response.json();
-    alert(json);
+    if (response.ok) {
+      console.log("Before: " + tasks);
+      dispatch({ type: "DELETE_TASK", payload: json });
+      console.log("After: " + tasks);
+    }
   };
 
   return (
@@ -21,11 +31,15 @@ const TaskCard = (props) => {
         onClick={toggleTaskCompletion}
         className={`checkbox ${props.data.completed ? "checked" : ""}`}
       >
-        {props.data.completed ? <i class="fa-solid fa-check fa-xl"></i> : ""}
+        {props.data.completed ? (
+          <i className="fa-solid fa-check fa-xl"></i>
+        ) : (
+          ""
+        )}
       </div>
       <h2>{props.data.task}</h2>
       <div onClick={deleteTask} className="deleteButton">
-        <i class="fa-regular fa-trash-can fa-xl lower"></i>
+        <i className="fa-regular fa-trash-can fa-xl lower"></i>
       </div>
     </div>
   );
