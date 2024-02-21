@@ -1,9 +1,13 @@
 import { TasksContext } from "../context/TaskContext";
 import { useTasksContext } from "../hooks/useTasksContext";
+import { useState } from "react";
 
 const TaskCard = (props) => {
   const { tasks, dispatch } = useTasksContext();
+  const [loading, setLoading] = useState(false);
+
   const toggleTaskCompletion = async () => {
+    setLoading(true);
     const response = await fetch(`api/tasks/${props.data._id}`, {
       method: "PATCH",
     });
@@ -11,6 +15,7 @@ const TaskCard = (props) => {
     if (response.ok) {
       dispatch({ type: "TOGGLE_TASK", payload: json });
     }
+    setLoading(false);
   };
 
   const deleteTask = async () => {
@@ -29,13 +34,16 @@ const TaskCard = (props) => {
     <div className="taskCard">
       <div
         onClick={toggleTaskCompletion}
-        className={`checkbox ${props.data.completed ? "checked" : ""}`}
+        className={`checkbox 
+        ${props.data.completed && "checked"} ${loading && "loading"}`}
       >
-        {props.data.completed ? (
-          <i className="fa-solid fa-check fa-xl"></i>
-        ) : (
-          ""
+        {props.data.completed && (
+          <i
+            className={`fa-solid fa-check fa-xl ${loading && "invisible"}`}
+          ></i>
         )}
+        <div className={!loading && "invisible"}></div>
+        <div className={!loading && "invisible"}></div>
       </div>
       <h2>{props.data.task}</h2>
       <div onClick={deleteTask} className="deleteButton">

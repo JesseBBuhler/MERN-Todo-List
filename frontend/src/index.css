@@ -1,3 +1,5 @@
+/* General */
+
 :root {
   --primary-bg: #576490;
   --secondary-bg: #7796cb;
@@ -7,6 +9,7 @@
   --sideBarWidth: 10rem;
   --headerHeight: 5rem;
   --footerHeight: 4rem;
+  --checkBoxSize: 1.5rem;
 }
 
 body {
@@ -23,6 +26,12 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.invisible {
+  display: none;
+}
+
+/*general: end*/
 
 .header {
   background-color: var(--secondary-bg);
@@ -61,6 +70,7 @@ code {
   background-color: orangered;
   color: white;
 }
+/*sidebar: end*/
 
 .tasks {
   margin: 1rem calc(1rem + var(--sideBarWidth));
@@ -85,8 +95,8 @@ code {
 }
 
 .checkbox {
-  height: 1.5rem;
-  width: 1.5rem;
+  height: var(--checkBoxSize);
+  width: var(--checkBoxSize);
   border-radius: 5px;
   border: solid 3px red;
   text-align: center;
@@ -96,6 +106,57 @@ code {
   border: solid lightgreen;
   background-color: lightgreen;
 }
+
+/* ripple when loading: start */
+.taskCard .checkbox.loading {
+  border: none;
+  background-color: var(--secondary-card);
+  display: inline-block;
+  position: relative;
+  width: calc(var(--checkBoxSize) + 5px);
+  height: calc(var(--checkBoxSize) + 5px);
+}
+.taskCard .checkbox.loading div {
+  position: absolute;
+  border: 4px solid orangered;
+  opacity: 1;
+  border-radius: 50%;
+  animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+.taskCard .checkbox.loading div:nth-child(2) {
+  animation-delay: -0.5s;
+}
+@keyframes lds-ripple {
+  0% {
+    top: calc(var(--checkBoxSize) / 2);
+    left: calc(var(--checkBoxSize) / 2);
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+  4.9% {
+    top: calc(var(--checkBoxSize) / 2);
+    left: calc(var(--checkBoxSize) / 2);
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+  5% {
+    top: calc(var(--checkBoxSize) / 2);
+    left: calc(var(--checkBoxSize) / 2);
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+  100% {
+    top: 0px;
+    left: 0px;
+    width: var(--checkBoxSize);
+    height: var(--checkBoxSize);
+    opacity: 0;
+  }
+}
+/*ripple when loading: end */
 
 .deleteButton {
   background-color: orangered;
@@ -109,6 +170,7 @@ code {
   position: relative;
   top: 0.25rem;
 }
+/*Mainpage Tasks TaskCard: end */
 
 .footer {
   background-color: var(--secondary-bg);
