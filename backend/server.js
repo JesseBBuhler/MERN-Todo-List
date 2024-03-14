@@ -1,7 +1,8 @@
 //imports
 const express = require("express");
 const mongoose = require("mongoose");
-const taskRouts = require("./routes/tasksRoutes");
+const taskRoutes = require("./routes/tasksRoutes");
+const userRoutes = require("./routes/userRoutes");
 
 //declare constants
 const uri = "mongodb://localhost:27017";
@@ -20,7 +21,9 @@ app.use((req, res, next) => {
 });
 
 //routes
-app.use("/api/tasks", taskRouts);
+
+app.use("/api/tasks", taskRoutes);
+app.use("/api/users", userRoutes);
 
 mongoose
   .connect(fullURI)
