@@ -1,16 +1,17 @@
 //imports
+require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const taskRoutes = require("./routes/tasksRoutes");
 const userRoutes = require("./routes/userRoutes");
 
 //declare constants
-const uri = "mongodb://localhost:27017";
-const dbName = "ToDoList";
+const uri = process.env.MONGO_URI;
+const dbName = process.env.DBNAME;
 const fullURI = uri + "/" + dbName;
-const port = 2250;
+const port = process.env.PORT;
 
-//create app
+//create app hi
 const app = express();
 
 //middleware
