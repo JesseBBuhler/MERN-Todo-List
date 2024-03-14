@@ -6,9 +6,13 @@ const {
   checkTask,
   deleteTask,
 } = require("../controllers/tasksController");
+const requireAuth = require("../middleware/requireAuth");
 
 //set up
 const router = express.Router();
+
+//use requireAuth middleware to restrict routes to authorized users
+router.use(requireAuth);
 
 //GET all tasks
 router.get("/", getTasks);
